@@ -19,6 +19,11 @@ struct Process *createProcess(int newID, int priority, int cpuBurst,
   int ioBurst, int totalTime)
 {
   //TODO use malloc to implement this function
+  newID = malloc(sizeOfInt());
+  priority = malloc(sizeOfInt());
+  cpuBurst = malloc(sizeOfInt());
+  ioBurst = malloc(sizeOfInt());
+  totalTime = malloc(sizeOfInt());
 } // createProcess
 
 int switchState(struct Process *processToSwitch, char newState)
