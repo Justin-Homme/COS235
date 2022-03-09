@@ -25,6 +25,8 @@ struct Process *createProcess(int newID, int priority, int cpuBurst,
   newProcess->cpuBurst = cpuBurst;
   newProcess->ioBurst = ioBurst;
   newProcess->totalTime = totalTime;
+  newProcess->remainingTime = totalTime;  // new process so full time remains
+  newProcess->state = 'N';                // 'N' because it's a new process
 
   return newProcess;
 } // createProcess
