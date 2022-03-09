@@ -18,19 +18,20 @@ void printProcess(struct Process *process)
 struct Process *createProcess(int newID, int priority, int cpuBurst,
   int ioBurst, int totalTime)
 {
-  //TODO use malloc to implement this function
-  this.id = malloc(sizeOfInt());
-  priority = malloc(sizeOfInt());
-  cpuBurst = malloc(sizeOfInt());
-  ioBurst = malloc(sizeOfInt());
-  totalTime = malloc(sizeOfInt());
-  // TODO fix this since it is probably very wrong
-  
+  struct Process *newProcess = (struct Process *)malloc(sizeof(struct* Process));
+
+  newProcess->id = newID;
+  newProcess->priority = priority;
+  newProcess->cpuBurst = cpuBurst;
+  newProcess->ioBurst = ioBurst;
+  newProcess->totalTime = totalTime;
+
+  return newProcess;
 } // createProcess
 
 int switchState(struct Process *processToSwitch, char newState)
 {
-    int val;
+    int val;    // 0 means valid and 1 means invalid
     switch(*processToSwitch)
     {
         case N:
@@ -66,13 +67,13 @@ int switchState(struct Process *processToSwitch, char newState)
           break;
 
           default:
-            val = 1;
+            val = 1;    // if not one of above cases, any switch invalid
     }
 
     if(val == 0) {
-      *processToSwitch = newState;
+      *processToSwitch = newState;  // valid so update process
     }
 
-    return val;
+    return val;   // 0 if valid and 1 if invalid
 
 } // switchState
