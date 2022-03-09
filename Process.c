@@ -1,6 +1,13 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+/**
+* creates a struct: Process with id, totalTime, remainingTime, priority,
+* cpuBurst, ioBurst, and state
+*
+* has functions: printProcess, *createProcess, and switchState
+*/
+
 struct Process
 {
   unsigned int id, totalTime, remainingTime;
