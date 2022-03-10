@@ -20,7 +20,7 @@ struct ProcessTable *createInitialTable(int newNumProcesses, int sliceval);
 void printTable(struct ProcessTable *tableToPrint);
 
 /** return the index of the process with matching pid */
-int findpid(ProcessTable *tp, int pid);
+int findpid(struct ProcessTable *tp, int pid);
 
 /** frees of all information created with malloc */
 void freeProcessTable(struct ProcessTable *tableToFree);

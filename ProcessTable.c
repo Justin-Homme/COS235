@@ -1,9 +1,10 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include "ProcessTable.h"
 
 struct ProcessTable *createInitialTable(int newNumProcesses, int sliceval)
 {
-  struct ProcessTable *newTable = (struct ProcessTable *)malloc(sizeof(struct* ProcessTable));
+  struct ProcessTable *newTable = (struct ProcessTable *)malloc(sizeof(struct ProcessTable));
 
   newTable->numberProc = newNumProcesses;
   newTable->cpuProc = -1;
@@ -17,17 +18,17 @@ void printTable(struct ProcessTable *tableToPrint)
   printf("Number of processes: %d\n", tableToPrint->numberProc);
   printf("ID\tPri\tCPU\tI/O\tTot\tRem\tState\n");
 
-  for(struct Process *curProc = tableToPrint->processes; *curProc != NULL; curProc++)
+  for(struct Process *curProc = tableToPrint->processes; curProc != NULL; curProc++)
   {
-    printProcess(*curProc);
+    printProcess(curProc);
   }
 }
 
-int findpid(ProcessTable *tp, int pid)
+int findpid(struct ProcessTable *tp, int pid)
 {
   int count = 0;
   int curPid;
-  for(struct Process *curProc = tp->processes; *curProc != NULL; curProc++)
+  for(struct Process *curProc = tp->processes; curProc != NULL; curProc++)
   {
     curPid = curProc->id;
     if(curPid == pid) {
@@ -40,9 +41,9 @@ int findpid(ProcessTable *tp, int pid)
 
 void freeProcessTable(struct ProcessTable *tableToFree)
 {
-  for(struct Process *curProc = tableToFree->processes; *curProc != NULL; curProc++)
+  for(struct Process *curProc = tableToFree->processes; curProc != NULL; curProc++)
   {
     free(curProc);
   }
-  free(tableToFree); 
+  free(tableToFree);
 }

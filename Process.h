@@ -10,7 +10,7 @@ struct Process
   char state;
 };
 
-struct Process printProcess(struct Process *process);
+void printProcess(struct Process *process);
 
 struct Process *createProcess(int newID, int priority, int cpuBurst,
   int ioBurst, int totalTime);
