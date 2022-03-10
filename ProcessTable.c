@@ -41,7 +41,7 @@ int findpid(struct ProcessTable *tp, int pid)
 
 void freeProcessTable(struct ProcessTable *tableToFree)
 {
-  for(struct Process *curProc = tableToFree->processes; curProc != NULL; curProc++)
+  for(struct Process **curProc = tableToFree->processes; curProc != NULL; curProc++)
   {
     free(curProc);
   }

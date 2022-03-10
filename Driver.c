@@ -5,11 +5,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "Process.h"
 #include "ProcessTable.h"
 
 // a global pointer to the process table
-ProcessTable *processTable;
+struct ProcessTable *processTable;
 
 // global flags
 //     for output options:  (needed for phase 2)
@@ -34,7 +33,7 @@ usagexit(char *prog)
  *   - Use malloc to initialize Process space
  *   - Initialize values by reading from file using fscanf
  */
-void readFile(ProcessTable *table, char *fileName)
+void readFile(struct ProcessTable *table, char *fileName)
 {
 	FILE *fd;
 	int id, pri, cpu, io, total;
