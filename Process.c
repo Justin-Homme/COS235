@@ -32,7 +32,7 @@ struct Process *createProcess(int newID, int priority, int cpuBurst,
 
 int switchState(struct Process *processToSwitch, char newState)
 {
-    int val;    // 0 means valid and 1 means invalid
+    int val = -1;    // 0 means valid and 1 means invalid
     char curState = processToSwitch->state;
     switch(curState)
     {
@@ -77,14 +77,11 @@ int switchState(struct Process *processToSwitch, char newState)
           break;
     }
 
-    if(newState == 'N'){
-      return 1;
-    }
-
     if(val == 0) {
       processToSwitch->state = newState;  // valid so update process
+      return 0;
+    } else {
+      return 1;
     }
-
-    return val;   // 0 if valid and 1 if invalid
 
 } // switchState
