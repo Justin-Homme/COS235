@@ -122,6 +122,6 @@ main(int argc, char *argv[])
 	}
     }
     printf("Number of errors: %d\n", errors);
-
+    freeProcessTable(processTable);
     return 0;
 } // main

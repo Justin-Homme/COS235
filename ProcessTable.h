@@ -1,7 +1,7 @@
-#include "Process.h"
 #ifndef PROCTBL
 #define PROCTBL
 
+#include "Process.h"
 /**
 * struct with: numberProc, **processes, cpuProc, rr_slice
 *

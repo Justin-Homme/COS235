@@ -1,5 +1,6 @@
 #ifndef PROC
 #define PROC
+
 /**
 * Header file that makes a struct: Process
 * with id, totalTime, remainingTime, priority, cpuBurst, ioBurst, state
