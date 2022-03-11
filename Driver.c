@@ -1,10 +1,14 @@
 /*
- * Main driver method - provided for your use by Dr. A.
- * Be sure to READ this carefully and understand what it is doing.
+ * Main driver method - provided for your use by Dr. A.; ver. 1.2a
+ * Be sure to READ this carefully and understand how it is calling
+ * the functions that you will write.
+ *
+ * You should not need to modify this file (I think).
  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "Process.h"
 #include "ProcessTable.h"
 
 // a global pointer to the process table
@@ -40,6 +44,10 @@ void readFile(struct ProcessTable *table, char *fileName)
 	int i;
 
 	fd = fopen(fileName, "r");
+	if (fd == NULL) {
+	    fprintf(stderr, "Error on file open: [%s]\n", fileName);
+	    exit(2);
+	}
 	for (i=0; fd >= 0; i++) {
 	    fscanf(fd, "%d %d %d %d %d\n", &id, &pri, &cpu, &io, &total);
 	    table->processes[i] = createProcess(id, pri, cpu, io, total);
@@ -107,8 +115,7 @@ main(int argc, char *argv[])
     while (scanf(" %d %c\n", &apid, &nxstate) != EOF) {
 	indx = findpid(processTable, apid);
 	if (indx >= 0) {
-	    errors += switchState(processTable->processes[indx],
-						nxstate);
+	    errors += switchState(processTable->processes[indx], nxstate);
 	} else {
 	    printf("pid: %d not found.\n", apid);
 	    // TODO: errors++  ??

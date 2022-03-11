@@ -1,3 +1,5 @@
+#ifndef PROC
+#define PROC
 /**
 * Header file that makes a struct: Process
 * with id, totalTime, remainingTime, priority, cpuBurst, ioBurst, state
@@ -16,3 +18,5 @@ struct Process *createProcess(int newID, int priority, int cpuBurst,
   int ioBurst, int totalTime);
 
 int switchState(struct Process *processToSwitch, char newState);
+
+#endif

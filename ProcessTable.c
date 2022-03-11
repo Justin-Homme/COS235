@@ -18,23 +18,24 @@ void printTable(struct ProcessTable *tableToPrint)
   printf("Number of processes: %d\n", tableToPrint->numberProc);
   printf("ID\tPri\tCPU\tI/O\tTot\tRem\tState\n");
 
-  for(struct Process *curProc = tableToPrint->processes; curProc != NULL; curProc++)
+  for(struct Process **curProc = tableToPrint->processes; curProc != NULL; curProc++)
   {
-    printProcess(curProc);
+    printProcess(*curProc);
   }
 }
 
 int findpid(struct ProcessTable *tp, int pid)
 {
   int count = 0;
-  int curPid;
+
   for(struct Process *curProc = tp->processes; curProc != NULL; curProc++)
   {
-    curPid = curProc->id;
+    int curPid = curProc->id;
     if(curPid == pid) {
       return count;
+    } else {
+      count++;
     }
-    count++;
   }
   return -1;
 }

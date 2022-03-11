@@ -1,4 +1,6 @@
 #include "Process.h"
+#ifndef PROCTBL
+#define PROCTBL
 
 /**
 * struct with: numberProc, **processes, cpuProc, rr_slice
@@ -24,3 +26,5 @@ int findpid(struct ProcessTable *tp, int pid);
 
 /** frees of all information created with malloc */
 void freeProcessTable(struct ProcessTable *tableToFree);
+
+#endif
