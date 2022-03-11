@@ -18,9 +18,7 @@ void printTable(struct ProcessTable *tableToPrint)
 {
   printf("Number of processes: %d\n", tableToPrint->numberProc);
   printf("ID\tPri\tCPU\tI/O\tTot\tRem\tState\n");
-
-  // for(struct Process **curProc = tableToPrint->processes; curProc != NULL; curProc++)
-  // {
+  
   for(int i = 0; i < tableToPrint->numberProc; i++)
   {
     printProcess(tableToPrint->processes[i]);
@@ -46,10 +44,6 @@ int findpid(struct ProcessTable *tp, int pid)
 
 void freeProcessTable(struct ProcessTable *tableToFree)
 {
-  // for(struct Process **curProc = tableToFree->processes; curProc != NULL; curProc++)
-  // {
-  //   free(curProc);
-  //
   for(int i = 0; i < tableToFree->numberProc; i++)
   {
     free(tableToFree->processes[i]);

@@ -37,15 +37,7 @@ int switchState(struct Process *processToSwitch, char newState)
     switch(curState)
     {
         case 'N':
-          if(newState == 'R') {
-            val = 0;
-          } else {
-            val = 1;
-          }
-          break;
-
-        case 'R':
-          if(newState == 'Q' || 'T') {
+          if(newState == 'Q') {
             val = 0;
           } else {
             val = 1;
@@ -53,7 +45,15 @@ int switchState(struct Process *processToSwitch, char newState)
           break;
 
         case 'Q':
-          if(newState == 'B' || 'T') {
+          if(newState == 'R' || 'T') {
+            val = 0;
+          } else {
+            val = 1;
+          }
+          break;
+
+        case 'R':
+          if(newState == 'Q' || 'T' || 'B') {
             val = 0;
           } else {
             val = 1;
@@ -68,8 +68,17 @@ int switchState(struct Process *processToSwitch, char newState)
           }
           break;
 
-          default:
-            val = 1;    // if not one of above cases, any switch invalid
+        case 'T':
+          val = 1;    // if T, any switch is invalid
+          break;
+
+        default:
+          val = 1;
+          break;
+    }
+
+    if(newState == 'N'){
+      return 1;
     }
 
     if(val == 0) {
