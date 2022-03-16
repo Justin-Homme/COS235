@@ -29,9 +29,9 @@ int findpid(struct ProcessTable *tp, int pid)
 {
   int count = 0;
 
-  for(struct Process **curProc = tp->processes; curProc != NULL; curProc++)
+  for(int i=0; i < tp->numberProc; i++)
   {
-    struct Process *myCurProc = *curProc;
+    struct Process *myCurProc = tp->processes[i];
     int curPid = myCurProc->id;
     if(curPid == pid) {
       return count;
